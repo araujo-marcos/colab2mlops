@@ -10,20 +10,22 @@ import json
 # import pprint
 
 person = {
-        "age": 46,
-        "workclass": 'Private',
-        "fnlwgt": 364548,
-        "education": 'Bachelors',
-        "education_num": 13,
-        "marital_status": 'Divorced',
-        "occupation": 'Sales',
-        "relationship": 'Not-in-family',
-        "race": 'White',
-        "sex": 'Male',
-        "capital_gain": 8614,
-        "capital_loss": 0,
-        "hours_per_week": 40,
-        "native_country": 'United-States'
+        "age": 58,
+        "job": 'management',
+        "marital": 'married',
+        "education": 'tertiary',
+        "default": 'no',
+        "balance": 2143,
+        "housing": 'yes',
+        "loan": 'no',
+        "contact": 'unknown',
+        "day": 5,
+        "month": 'may',
+        "duration": 261,
+        "campaign": 1,
+        "pdays": -1,
+        "previous": 0,
+        "poutcome": 'unknown'
     }
 
 url = "http://127.0.0.1:8000"
@@ -32,18 +34,21 @@ response = requests.post(f"{url}/predict",
                          json=person)
 
 print(f"Request: {url}/predict")
-print(f"Person: \n age: {person['age']}\n workclass: {person['workclass']}\n"\
-      f" fnlwgt: {person['age']}\n education: {person['education']}\n"\
-      f" education_num: {person['education_num']}\n"\
-      f" marital_status: {person['marital_status']}\n"\
-      f" occupation: {person['occupation']}\n"\
-      f" relationship: {person['relationship']}\n"\
-      f" race: {person['race']}\n"\
-      f" sex: {person['sex']}\n"\
-      f" capital_gain: {person['capital_gain']}\n"\
-      f" capital_loss: {person['capital_loss']}\n"\
-      f" hours_per_week: {person['hours_per_week']}\n"\
-      f" native_country: {person['native_country']}\n"
+print(f"Person: \n age: {person['age']}\n job: {person['job']}\n"\
+      f" marital: {person['marital']}\n education: {person['education']}\n"\
+      f" default: {person['default']}\n"\
+      f" balance: {person['balance']}\n"\
+      f" housing: {person['housing']}\n"\
+      f" loan: {person['loan']}\n"\
+      f" contact: {person['contact']}\n"\
+      f" day: {person['day']}\n"\
+      f" month: {person['month']}\n"\
+      f" duration: {person['duration']}\n"\
+      f" campaign: {person['campaign']}\n"\
+      f" pdays: {person['pdays']}\n"\
+      f" previous: {person['previous']}\n"\
+      f" poutcome: {person['poutcome']}\n"
+      
      )
 print(f"Result of model inference: {response.json()}")
 print(f"Status code: {response.status_code}")

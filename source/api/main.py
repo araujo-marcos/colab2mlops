@@ -1,8 +1,3 @@
-"""
-Creator: Ivanovitch Silva
-Date: 17 April 2022
-Create API
-"""
 # from typing import Union
 from pydantic import BaseModel
 from fastapi.responses import HTMLResponse
@@ -32,37 +27,41 @@ app = FastAPI()
 # a person in our dataset has the following attributes
 class Person(BaseModel):
     age: int
-    workclass: str
-    fnlwgt: int
+    job: str
+    marital: str
     education: str
-    education_num: int
-    marital_status: str
-    occupation: str
-    relationship: str
-    race: str
-    sex: str
-    capital_gain: int
-    capital_loss: int
-    hours_per_week: int
-    native_country: str
+    default: str 
+    balance: int
+    housing: str
+    loan: str
+    contact: str
+    day: int
+    month: str
+    duration: int
+    campaign: int
+    pdays: int
+    previous: int 
+    poutcome: str
 
     class Config:
         schema_extra = {
             "example": {
-                "age": 72,
-                "workclass": 'Self-emp-inc',
-                "fnlwgt": 473748,
-                "education": 'Some-college',
-                "education_num": 10,
-                "marital_status": 'Married-civ-spouse',
-                "occupation": 'Exec-managerial',
-                "relationship": 'Husband',
-                "race": 'White',
-                "sex": 'Male',
-                "capital_gain": 0,
-                "capital_loss": 0,
-                "hours_per_week": 25,
-                "native_country": 'United-States'
+                "age": 58,
+                "job": 'management',
+                "marital": 'married',
+                "education": 'tertiary',
+                "default": 'no',
+                "balance": 2143,
+                "housing": 'yes',
+                "loan": 'no',
+                "contact": 'unknown',
+                "day": 5,
+                "month": 'may',
+                "duration": 261,
+                "campaign": 1,
+                "pdays": -1,
+                "previous": 0,
+                "poutcome": 'unknown'
             }
         }
 
@@ -93,4 +92,4 @@ async def get_inference(person: Person):
     # Predict test data
     predict = pipe.predict(df)
 
-    return "low income <=50K" if predict[0] <= 0.5 else "high income >50K"
+    return "no subscribed " if predict[0] <= 0.5 else "subscribed"

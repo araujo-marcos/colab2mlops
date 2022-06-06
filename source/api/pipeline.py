@@ -1,8 +1,3 @@
-"""
-Creator: Ivanovitch Silva
-Date: 16 April 2022
-Define classes used in the pipeline
-"""
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.preprocessing import StandardScaler
@@ -43,42 +38,7 @@ class CategoricalTransformer(BaseEstimator, TransformerMixin):
         # Remove white space in categorical features
         df = df.apply(lambda row: row.str.strip())
 
-        # customize feature?
-        # How can I identify what needs to be modified? EDA!!!!
-        if self.new_features:
-
-            # minimize the cardinality of native_country feature
-            # check cardinality using df.native_country.unique()
-            df.loc[df['native_country'] != 'United-States','native_country'] = 'non_usa'
-
-            # replace ? with Unknown
-            edit_cols = ['native_country', 'occupation', 'workclass']
-            for col in edit_cols:
-                df.loc[df[col] == '?', col] = 'unknown'
-
-            # decrease the cardinality of education feature
-            hs_grad = ['HS-grad', '11th', '10th', '9th', '12th']
-            elementary = ['1st-4th', '5th-6th', '7th-8th']
-            # replace
-            df['education'].replace(to_replace=hs_grad,value='HS-grad',inplace=True)
-            df['education'].replace(to_replace=elementary,value='elementary_school',inplace=True)
-
-            # adjust marital_status feature
-            married = ['Married-spouse-absent','Married-civ-spouse','Married-AF-spouse']
-            separated = ['Separated', 'Divorced']
-
-            # replace
-            df['marital_status'].replace(to_replace=married, value='Married', inplace=True)
-            df['marital_status'].replace(to_replace=separated, value='Separated', inplace=True)
-
-            # adjust workclass feature
-            self_employed = ['Self-emp-not-inc', 'Self-emp-inc']
-            govt_employees = ['Local-gov', 'State-gov', 'Federal-gov']
-
-            # replace elements in list.
-            df['workclass'].replace(to_replace=self_employed,value='Self_employed',inplace=True)
-            df['workclass'].replace(to_replace=govt_employees,value='Govt_employees',inplace=True)
-
+        
         # update column names
         self.colnames = df.columns
 
