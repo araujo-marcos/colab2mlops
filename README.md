@@ -50,4 +50,11 @@ A seguir serão apresentadas as informações dos atributos utilizados no projet
 ## Variáveis de Saída
 * y - o cliente realizou um depósito a prazo? (sim, não).
 
+# Detalhes do <i> Workflow </i>
+  
+  Para a execução do projeto foram utilizados os passos apresentados no workflow criado e disponibilizado pelo Professor Ivanovitch Silva. Os passos desse pipeline foram conforme a imagem abaixo.
+  
+  ![Workflow](https://github.com/ivanovitchm/ppgeecmachinelearning/blob/main/images/workflow.png)
 
+  
+  
