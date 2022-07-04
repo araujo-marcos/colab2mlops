@@ -56,5 +56,7 @@ A seguir serão apresentadas as informações dos atributos utilizados no projet
   
   ![Workflow](https://github.com/ivanovitchm/ppgeecmachinelearning/blob/main/images/workflow.png)
 
-  
+# Instalando as bibliotecas:
+
+
   
